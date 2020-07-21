@@ -1,0 +1,26 @@
+Exercise 1.1
+
+Exercise 1.1 (Basic Acquaintance with Programmed Imaging) Implement a program (e.g., in Java, C++, or Matlab) that does the following:
+1. Load a colour (RGB) image I in a lossless data format, such as bmp, png, or tiff, and display it on a screen.
+2. Display the histograms of all three colour channels of I.
+3. Move the mouse cursor within your image. For the current pixel location p in the image, compute and display
+   (a) the outer border (see grey box) of the 11×11 square window Wp around pixel p in your image I (i.e., p is the reference point of this window),
+   (b) (above this window or in a separate command window) the location p (i.e., its coordinates) of the mouse cursor and the RGB values of your image I at p,
+   (c) (below this window or in a separate command window) the intensity value [R(p)+G(p)+B(p)]/3 atp, and
+   (d) the mean μWp and standard deviation σWp.
+4. Discuss examples of image windows Wp (within your selected input images) whereyousee“homogeneousdistributionsofimagevalues”,andwindowsshowing “inhomogeneous areas”. Try to deﬁne your deﬁnition of “homogeneous” or “inhomogeneous” in terms of histograms, means, or variances.
+
+The outer border of an 11×11 square window is a 13×13 square curve (which could be drawn, e.g., in white) having the recent cursor position at its centre. You are expected that you dynamically update this outer border of the 11×11 window when moving the cursor.
+
+Solution to Exercise 1.1; Part4
+Homogeneous vs In-homogeneous in terms of histograms, means, or variances:
+Homogeneous regions have minimal variance between the standard deviation and mean values with a standard histogram distribution (flat horizontal in areas of homogeneity)
+In-homogeneous regions have high variance between the standard deviation and mean values with a non-standard histogram distribution (curved in areas of in-homogeneity)
+Further, low variance indicates low contrast and not interesting regions, while high variance indicates high contrast and interesting regions. Another note is that where there is a higher standard deviation there tend to be edges in those regions.
+
+Exercise 1.2 (modified)
+
+For this part you will use the images fromST2MainHall4.ziparchive.
+A. (10p) Build color histograms for all images in the sequence. Color histogram should be512-bin: [(r/32)∗64 + (g/32)∗8 +b/32] will convert a color value into an index. Note that all divisions are integer divisions as in C programming language. That means thatthey can be accomplished using bit shifts.
+B. (10p) Write two functions for histograms comparison: histogram intersection and chi-squared measure. Test your functions on the image sequence.
+C. (10p) Using your histogram distance functions compare all image pairs. Create two linearly scaled images displaying your results. The scaling should be between 0 for theminimal distance andGmaxfor the maximal. Note that the similarity and the distanceshould have different sense, i.e. the similarity should be minimal when the distance ismaximal and vice versa. Use either colors or gray levels to represent quality of match.
