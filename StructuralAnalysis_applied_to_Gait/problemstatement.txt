@@ -1,0 +1,44 @@
+1.)
+Question: Apply functions listed in “Structural Analysis and Shape Descriptors” section of OpenCV documentation to compute various features on the silhouettes of the person. Find and display image boundaries/contours. Find polygonal approximation of computed boundaries and compute convex hull and the deﬁcits of convexity for the shapes. Compute area, perimeter, and all ﬁrst and second order image moments for the original image and for the convex hull. Illustrate the process of feature calculation on two diﬀerent image and display the contour with marked polygonal approximation and the convex hull. Note that this means that you have to mark and draw the corresponding polygons.
+
+Answer:
+The program does the calculations on all the images in the GaitImages folder, and displays for the first two in the sequence at runtime. The results folder contains all these images. The area, perimeter, first and second order moments are all found in computedfeatures.csv
+
+2.)
+Question: Create a table with computed values for all frames: display the computed features. For deﬁcits of convexity compute the number and their total area.
+
+Answer: See computedfeatures.csv
+
+3.)
+Question: Given an image boundary implement the method from the book to compute curvature along the boundary. Use color coding to display computed values in an image. The color scheme should be used to display curvature with higher curvature values represented by ‘hotter’ colors. Mark the local maxima of the curvature. You should experiment with the window size (−k,+k) to determine what works well for curvature estimation. Discuss your choices.
+
+Answer:
+
+Curvature: White pixels have low curvature, Dark Red pixels have high curvature after applying a heatmap to the normalized grayscale.
+     
+Local Maxima: Blue dots mark where the maximum curvature exists.
+
+After experimenting with the window size, k = 4 turned out to work well for the curvature estimation
+
+4.)
+Question: Given a silhouette boundary its distance transform corresponds to distances of nonboundary pixels to nearest boundary point. Compute distance transform for all boundaries. The algorithm is described in the book. Use Euclidean distance transform. Display at least two ﬁles showing the computed distance transform results.
+
+Answer:
+
+Euclidean Distance Transform:
+     
+5.)
+Question: Chamfer matching is a technique used for matching (possibly noisy) image boundaries. It utilizes distance transform. The method will be described in class and the slides will be posted. Implement chamfer matching and use it to match all pairs of gait images in the provided sequence. Display the results as an image in the manner of Homeworks #2 & #3.
+
+6.)
+Question: Analyze the results in parts 2 and 5. What can you conclude.
+a. Is there periodicity and how it shows in results (parts 2 & 5)?
+b. Two most distinct phases of gait correspond to the widest and the narrowest proﬁles. Can you detect them from features displayed in 2.
+c. Could you use curvature to detect joints and segment body parts? How?
+
+Answer:
+a.) Yes, the silhouettes taken in order have similar limb position as one steps through the sequence. As the width of the movement becomes greater one image is less similar to those with less width. The data around the area, perimeter, and moments have a pattern showing periodicity as well as the results of the chamfer matching graph.
+b.) Yes, after applying the convex hull, the widest profile has the largest area, while the narrowest profile has the least area.
+c.) Yes, joints and body parts can be identified by those points of the silhouette with the highest curvature, as shown in the heatmap that was calculated.
+
+Solution: for reference, see source implementation for correct file structure and required images
